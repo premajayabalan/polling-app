@@ -6,11 +6,13 @@ import ResultsPage from "./pages/ResultsPage";
 import HistoryPage from "./pages/HistoryPage";
 import MyPollsPage from "./pages/MyPollsPage";
 import Navbar from "./components/Navbar";
+import OnboardingTips from "./components/OnboardingTips";
 import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <OnboardingTips />
       <Toaster
         position="top-right"
         toastOptions={{
