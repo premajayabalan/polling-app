@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: #0a0a0f;
+  color: #f4f4f5;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #12121a; }
+::-webkit-scrollbar-thumb { background: #6c63ff; border-radius: 99px; }
+
+/* Glass card */
+.glass {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+}
+
+/* Glow button */
+.glow-btn {
+  background: linear-gradient(135deg, #6c63ff, #a78bfa);
+  box-shadow: 0 0 24px rgba(108,99,255,0.4);
+  transition: all 0.2s ease;
+}
+.glow-btn:hover {
+  box-shadow: 0 0 40px rgba(108,99,255,0.7);
+  transform: translateY(-1px);
+}
+.glow-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Danger button */
+.danger-btn {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+  box-shadow: 0 0 16px rgba(239,68,68,0.3);
+  transition: all 0.2s ease;
+}
+.danger-btn:hover {
+  box-shadow: 0 0 28px rgba(239,68,68,0.5);
+  transform: translateY(-1px);
+}
+
+/* Outline button */
+.outline-btn {
+  background: transparent;
+  border: 1px solid rgba(108,99,255,0.4);
+  color: #a78bfa;
+  transition: all 0.2s ease;
+}
+.outline-btn:hover {
+  background: rgba(108,99,255,0.08);
+  border-color: #6c63ff;
+  color: #c4b5fd;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.45s ease forwards; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(108,99,255,0.4); }
+  50%       { box-shadow: 0 0 24px rgba(108,99,255,0.8); }
+}
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #6c63ff;
+  animation: pulse-glow 1.8s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Input base */
+.inp {
+  width: 100%;
+  background: #12121a;
+  border: 1px solid rgba(255,255,255,0.1);
+  outline: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #f4f4f5;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.inp:focus { border-color: #6c63ff; }
+.inp::placeholder { color: #52525b; }
+
+/* Textarea */
+textarea.inp { resize: vertical; min-height: 80px; }
+
+/* Tab bar */
+.tab-active {
+  background: rgba(108,99,255,0.15);
+  border-color: rgba(108,99,255,0.5);
+  color: #c4b5fd;
+}
+.tab-inactive {
+  background: transparent;
+  border-color: rgba(255,255,255,0.07);
+  color: #71717a;
+}
+.tab-inactive:hover {
+  border-color: rgba(255,255,255,0.15);
+  color: #a1a1aa;
+}
+
+/* Segment control */
+.seg-active {
+  background: #6c63ff;
+  color: white;
+}
+.seg-inactive {
+  background: transparent;
+  color: #71717a;
+}
+.seg-inactive:hover { color: #a1a1aa; }
+
+/* Progress bar */
+.progress-bar {
+  height: 6px;
+  border-radius: 99px;
+  background: #1c1c2e;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #6c63ff, #a78bfa);
+  transition: width 0.6s ease;
+}
+
+/* Countdown pill */
+.countdown-pill {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #fca5a5;
+  border-radius: 99px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+}
+.countdown-pill.green {
+  background: rgba(34,197,94,0.1);
+  border-color: rgba(34,197,94,0.25);
+  color: #86efac;
+}
+
+/* Calendar */
+.cal-day {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.cal-day:hover { background: rgba(108,99,255,0.15); }
+.cal-day.selected { background: #6c63ff; color: white; }
+.cal-day.today { border: 1px solid rgba(108,99,255,0.4); color: #a78bfa; }
+.cal-day.disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
